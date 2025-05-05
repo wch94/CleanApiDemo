@@ -26,8 +26,10 @@ jobs:
       - name: Publish WebApi project
         run: dotnet publish WebApi/WebApi.csproj -c Release -o ./myapp
 
-      - name: Zip published app
-        run: zip -r myapp.zip ./myapp
+      - name: Zip published app (contents only)
+        run: |
+          cd ./myapp
+          zip -r ../myapp.zip .
 
       - name: Upload zipped artifact
         uses: actions/upload-artifact@v4
