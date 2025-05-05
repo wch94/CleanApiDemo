@@ -29,6 +29,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddAutoMapper(typeof(Application.MappingProfiles.ProductProfile).Assembly);
+
 builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();

@@ -1,11 +1,11 @@
-﻿using Application.Services;
-using Core.Entities;
+﻿using Application.DTOs;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
 
-[Route("api/[controller]")]
 [ApiController]
+[Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
     private readonly ProductService _service;
@@ -16,8 +16,34 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<Product>> Get()
+    public async Task<IActionResult> GetAll() =>
+        Ok(await _service.GetAllAsync());
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
     {
-        return await _service.GetAllProductsAsync();
+        var dto = await _service.GetByIdAsync(id);
+        return dto == null ? NotFound() : Ok(dto);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(ProductDto dto)
+    {
+        var created = await _service.AddAsync(dto);
+        return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, ProductDto dto)
+    {
+        var success = await _service.UpdateAsync(id, dto);
+        return success ? NoContent() : NotFound();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var success = await _service.DeleteAsync(id);
+        return success ? NoContent() : NotFound();
     }
 }
