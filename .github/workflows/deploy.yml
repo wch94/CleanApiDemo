@@ -65,3 +65,4 @@ jobs:
           app-name: 'my-cleanapi-demo'
           slot-name: 'Production'
           package: 'myapp.zip'
+          deployment-method: 'zipDeploy'
