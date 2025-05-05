@@ -1,4 +1,6 @@
-﻿using Azure.Identity;
+﻿using Application.Services;
+using Azure.Identity;
+using Core.Interfaces;
 using Infrastructure.Persistence;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +27,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
     options.UseSqlServer(connection);
 });
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 
