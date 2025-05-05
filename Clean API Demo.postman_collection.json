@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "12f37f85-46ab-4290-a275-c3edc3846c60",
+		"name": "Clean API Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44695198",
+		"_collection_link": "https://will-7625763.postman.co/workspace/Will's-Workspace~e23bd9c7-d029-464b-863a-1e2f22c37ef3/collection/44695198-12f37f85-46ab-4290-a275-c3edc3846c60?action=share&source=collection_link&creator=44695198"
+	},
+	"item": [
+		{
+			"name": "/api/Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products",
+					"protocol": "https",
+					"host": [
+						"my-cleanapi-demo",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Demo7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products",
+					"protocol": "https",
+					"host": [
+						"my-cleanapi-demo",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products/:id",
+					"protocol": "https",
+					"host": [
+						"my-cleanapi-demo",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 7,\r\n    \"name\": \"Demo!!!123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products/:id",
+					"protocol": "https",
+					"host": [
+						"my-cleanapi-demo",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/Products/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products/:id",
+					"protocol": "https",
+					"host": [
+						"my-cleanapi-demo",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "scope",
+				"value": "api://a1edb4c2-a6fe-4e42-9425-73765b057d13/.default",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "redacted",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "c0456cb1-50db-4c27-b817-fa1158006bf2",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://login.microsoftonline.com/5243421f-fa6a-42bb-9456-b62fc4bee840/oauth2/v2.0/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

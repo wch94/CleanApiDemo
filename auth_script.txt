@@ -1,0 +1,1 @@
+curl.exe -X POST https://login.microsoftonline.com/5243421f-fa6a-42bb-9456-b62fc4bee840/oauth2/v2.0/token -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=c0456cb1-50db-4c27-b817-fa1158006bf2" -d "client_secret=redacted" -d "scope=api://a1edb4c2-a6fe-4e42-9425-73765b057d13/.default" -d "grant_type=client_credentials"
