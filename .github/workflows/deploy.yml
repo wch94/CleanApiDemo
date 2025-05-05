@@ -26,11 +26,14 @@ jobs:
       - name: Publish WebApi project
         run: dotnet publish WebApi/WebApi.csproj -c Release -o ./myapp
 
-      - name: Upload artifact for deployment job
+      - name: Zip published app
+        run: zip -r myapp.zip ./myapp
+
+      - name: Upload zipped artifact
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-app
-          path: ./myapp
+          path: myapp.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -61,4 +64,4 @@ jobs:
         with:
           app-name: 'my-cleanapi-demo'
           slot-name: 'Production'
-          package: 'dotnet-app'
+          package: 'myapp.zip'
