@@ -16,9 +16,14 @@ public class ProductService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ProductDto>> GetAllAsync()
+    public async Task<IEnumerable<ProductDto>> GetAllAsync(
+        string? search,
+        string sortBy,
+        bool desc,
+        int page,
+        int pageSize)
     {
-        var products = await _repository.GetAllAsync();
+        var products = await _repository.GetAllAsync(search, sortBy, desc, page, pageSize);
         return _mapper.Map<IEnumerable<ProductDto>>(products);
     }
 

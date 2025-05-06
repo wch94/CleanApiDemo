@@ -13,16 +13,35 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/api/Products?search=test&sortBy=Name&desc=false&page=1&pageSize=10",
 					"host": [
-						"my-cleanapi-demo",
-						"azurewebsites",
-						"net"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
 						"Products"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "test"
+						},
+						{
+							"key": "sortBy",
+							"value": "Name"
+						},
+						{
+							"key": "desc",
+							"value": "false"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
 					]
 				}
 			},
@@ -43,12 +62,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/api/Products",
 					"host": [
-						"my-cleanapi-demo",
-						"azurewebsites",
-						"net"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
@@ -64,12 +80,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products/:id",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/api/Products/:id",
 					"host": [
-						"my-cleanapi-demo",
-						"azurewebsites",
-						"net"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
@@ -79,7 +92,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "7"
+							"value": "1"
 						}
 					]
 				}
@@ -93,7 +106,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 7,\r\n    \"name\": \"Demo!!!123\"\r\n}",
+					"raw": "{\r\n    \"name\": \"testing123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,12 +114,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products/:id",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/api/Products/:id",
 					"host": [
-						"my-cleanapi-demo",
-						"azurewebsites",
-						"net"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
@@ -116,7 +126,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "7"
+							"value": "1"
 						}
 					]
 				}
@@ -138,12 +148,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://my-cleanapi-demo.azurewebsites.net/api/Products/:id",
-					"protocol": "https",
+					"raw": "{{baseUrl}}/api/Products/:id",
 					"host": [
-						"my-cleanapi-demo",
-						"azurewebsites",
-						"net"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
@@ -164,6 +171,11 @@
 	"auth": {
 		"type": "oauth2",
 		"oauth2": [
+			{
+				"key": "tokenName",
+				"value": "Auth Token",
+				"type": "string"
+			},
 			{
 				"key": "scope",
 				"value": "api://a1edb4c2-a6fe-4e42-9425-73765b057d13/.default",

@@ -56,17 +56,27 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    var sqlServer = builder.Configuration["Database:Server"];
-    var database = builder.Configuration["Database:Name"];
+    SqlConnection connection;
 
-    var credential = new DefaultAzureCredential();
-    var token = credential.GetToken(
-        new Azure.Core.TokenRequestContext(new[] { "https://database.windows.net/" }));
-
-    var connection = new SqlConnection($"Server={sqlServer};Database={database};")
+    if (bool.TryParse(builder.Configuration["LOCAL_DEVELOPMENT"], out bool isLocalDev))
     {
-        AccessToken = token.Token
-    };
+        var connectionString = "Data Source=my-sql-server-wch94.database.windows.net;Initial Catalog=MyDatabase;User ID=wch94_aol.com#EXT#@wch94aol.onmicrosoft.com;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Authentication=ActiveDirectoryInteractive;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        connection = new SqlConnection(connectionString);
+    }
+    else
+    {
+        var sqlServer = builder.Configuration["Database:Server"];
+        var database = builder.Configuration["Database:Name"];
+
+        var credential = new DefaultAzureCredential();
+        var token = credential.GetToken(
+            new Azure.Core.TokenRequestContext(new[] { "https://database.windows.net/" }));
+
+        connection = new SqlConnection($"Server={sqlServer};Database={database};")
+        {
+            AccessToken = token.Token
+        };
+    }
 
     options.UseSqlServer(connection);
 });

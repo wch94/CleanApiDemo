@@ -13,7 +13,33 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Product>> GetAllAsync() => await _context.Products.ToListAsync();
+    public async Task<IEnumerable<Product>> GetAllAsync(
+        string? search,
+        string sortBy,
+        bool desc,
+        int page,
+        int pageSize)
+    {
+        var query = _context.Products.AsQueryable();
+
+        // Filtering
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            query = query.Where(p => p.Name.Contains(search));
+        }
+
+        // Sorting
+        query = sortBy.ToLower() switch
+        {
+            "name" => desc ? query.OrderByDescending(p => p.Name) : query.OrderBy(p => p.Name),
+            _ => query.OrderBy(p => p.Name) // default fallback
+        };
+
+        // Paging
+        query = query.Skip((page - 1) * pageSize).Take(pageSize);
+
+        return await query.ToListAsync();
+    }
 
     public async Task<Product?> GetByIdAsync(int id) => await _context.Products.FindAsync(id);
 
