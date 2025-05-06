@@ -20,7 +20,7 @@ public class ProductRepository : IProductRepository
         int page,
         int pageSize)
     {
-        var query = _context.Products.AsQueryable();
+        var query = _context.Products.AsNoTracking().AsQueryable();
 
         // Filtering
         if (!string.IsNullOrWhiteSpace(search))
@@ -41,7 +41,8 @@ public class ProductRepository : IProductRepository
         return await query.ToListAsync();
     }
 
-    public async Task<Product?> GetByIdAsync(int id) => await _context.Products.FindAsync(id);
+    public async Task<Product?> GetByIdAsync(int id)
+        => await _context.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
 
     public async Task AddAsync(Product product)
     {
