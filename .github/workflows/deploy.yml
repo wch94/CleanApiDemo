@@ -3,7 +3,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -20,11 +20,11 @@ jobs:
         with:
           dotnet-version: '9.x'
 
-      - name: Build WebApi project
-        run: dotnet build WebApi/WebApi.csproj --configuration Release
+      - name: Build Api project
+        run: dotnet build Api/Api.csproj --configuration Release
 
-      - name: Publish WebApi project
-        run: dotnet publish WebApi/WebApi.csproj -c Release -o ./myapp
+      - name: Publish Api project
+        run: dotnet publish Api/Api.csproj -c Release -o ./myapp
 
       - name: Zip published app (contents only)
         run: |
