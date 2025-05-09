@@ -1,7 +1,7 @@
 ﻿using Application.DTOs;
+using Application.Interfaces;
 using AutoMapper;
-using Core.Entities;
-using Core.Interfaces;
+using Domain.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Services;

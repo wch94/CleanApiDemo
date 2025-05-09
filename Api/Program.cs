@@ -1,7 +1,7 @@
-﻿using Application.Services;
+﻿using Application.Interfaces;
+using Application.Services;
 using Application.Validators;
 using Azure.Identity;
-using Core.Interfaces;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Persistence;
