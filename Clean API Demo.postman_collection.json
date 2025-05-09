@@ -4,7 +4,7 @@
 		"name": "Clean API Demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "44695198",
-		"_collection_link": "https://will-7625763.postman.co/workspace/Will's-Workspace~e23bd9c7-d029-464b-863a-1e2f22c37ef3/collection/44695198-12f37f85-46ab-4290-a275-c3edc3846c60?action=share&source=collection_link&creator=44695198"
+		"_collection_link": "https://will-7625763.postman.co/workspace/e23bd9c7-d029-464b-863a-1e2f22c37ef3/collection/44695198-12f37f85-46ab-4290-a275-c3edc3846c60?action=share&source=collection_link&creator=44695198"
 	},
 	"item": [
 		{
@@ -238,6 +238,18 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:7212",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl-Azure",
+			"value": "https://my-cleanapi-demo.azurewebsites.net",
+			"type": "default"
 		}
 	]
 }
